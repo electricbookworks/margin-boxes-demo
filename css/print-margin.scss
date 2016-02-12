@@ -1,0 +1,149 @@
+---
+# Print styles
+---
+
+// WHAT IS THIS? TBS
+
+// First, let's set character encoding. Don't change this.
+@charset "utf-8";
+
+// -------------
+// Set variables
+// -------------
+
+// First, we set several variables related to overall page setup.
+$page-size: 129mm 198mm; // Width, then height. 129×198 is B-format (Lightning Source compatible)
+$margin-top: 15mm;
+$margin-bottom: 20mm;
+$margin-outside: 13mm;
+$margin-inside: 19mm;
+$bleed: 3mm;
+$trim: 3mm;
+$crop-marks: crop; // crop | none
+
+// We name font variables for two categories:
+// - 'text' fonts are used for body text and some page features;
+// - 'display' fonts are used for headings and similar short-string features.
+// For each category, we set a main font and a secondary font, allowing up to four fonts.
+// Finally, we set a fifth, monospace font for elements like computer code.
+$font-text-main: "Linux Libertine", serif;
+$font-text-secondary: "Linux Libertine", sans-serif;
+$font-display-main: "Linux Libertine", sans-serif;
+$font-display-secondary: "Linux Libertine", serif;
+$font-code: "Inconsolata", monospace;
+
+// Finally, we set variables related to text flow.
+$font-size-default: 11pt;
+$line-height-default: 14pt; // Set in points. For consistent baselines, all other line heights and vertical spaces are based on this.
+$text-align: left;
+$orphans: 1; // Minimum number of lines that must be left at the bottom of the first page
+$widows: 1; // Minimum number of lines that must be left at the top of the second page
+$hyphenation: auto; // Can be auto, none, or manual (only breaks on hyphens and soft hyphens)
+$hyphenation-dictionary: ""; // File name of dictionary in css/dictionaries.
+
+// ----------------------------------------------------
+// Import font files (@font-face) for fonts you specify
+// ----------------------------------------------------
+
+@import "font-linux-libertine";
+//@import "font-source-sans-pro";
+@import "font-inconsolata";
+//@import "font-crimson";
+//@import "font-crimson-text";
+//@import "font-overpass";
+//@import "font-montserrat";
+
+// ------------------------
+// Import your master theme
+// ------------------------
+
+@import "print-classic";
+
+// ----------------------
+// Start-on-right options
+// ----------------------
+
+// To start chapters on a left- or a right-hand page, uncommment the following line:
+//@import "print-classic-start-on-recto-or-verso";
+
+// ------------------------------
+// Page footer and header options
+// ------------------------------
+
+// Running footers with page number outside, heading inside
+//@import "print-classic-page-footers";
+
+// If you want only bottom-centered page numbers, uncomment the following line
+//@import "print-classic-page-footers-page-numbers-only";
+
+// If you want page headers, uncomment the following line
+//@import "print-classic-page-headers";
+
+// If you want page headers with headings only and no page numbers, uncomment the following line
+//@import "print-classic-page-headers-headings-only";
+
+// Uncomment to turn off footers completely
+//@import 'print-classic-page-footers-none';
+
+// -------------
+// Custom styles
+// -------------
+
+// Add any custom style rules here.
+
+.chapter {
+	margin-top: 0;
+}
+
+@page chapter {
+	background-color: purple;
+	border: 2pt solid cyan;
+	margin-top: 3em;
+	margin-inside: 20mm;
+	margin-bottom: 5em;
+	margin-outside: 30mm;
+    @top-left-corner {
+        content: "this is the top left";
+        background: green;
+        padding: 0;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @top-center {
+        content: "this is the top center";
+        background: red;
+        padding: 0;
+        margin: 1em 0 0 0;
+        border: 1pt solid blue;
+        vertical-align: top;
+    }
+    @top-right-corner {
+        content: "this is the top right";
+        background: green;
+        padding: 0;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @bottom-right-corner {
+        content: "this is the bottom right";
+        background: red;
+        padding: 0;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @bottom-center {
+        content: "this is the bottom center";
+        background: green;
+        padding: 0;
+        margin: 0 0 2em 0;
+        border: 1pt solid blue;
+        vertical-align: bottom;
+    }
+    @bottom-left-corner {
+        content: "this is the bottom left";
+        background: red;
+        padding: 0;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+}

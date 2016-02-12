@@ -1,0 +1,97 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>: Margin boxes demo</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="/margin-boxes-demo/css/web.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="../css/print-margin.css" />
+</head>
+<body class="chapter">
+
+
+		<div id="nav-bar" class="non-printing">
+			<p>
+				<a href="/margin-boxes-demo/" title="Home: Demo" class="nav-series">Demo</a>
+				<a href="0-3-contents.html" title="Contents: " class="nav-book"></a>
+				<a href="" title="Top: Margin boxes demo"  class="nav-page">Margin boxes demo</a>
+			</p>
+		</div><!--#nav-bar-->
+
+	<div id="wrapper">
+
+
+<p><code class="highlighter-rouge">
+@page chapter {
+	background-color: purple;
+	border: 2pt solid cyan;
+	margin-top: 3em;
+	margin-inside: 20mm;
+	margin-bottom: 5em;
+	margin-outside: 30mm;
+    @top-left-corner {
+        content: "this is the top left";
+        background: green;
+        padding: 0;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @top-center {
+        content: "this is the top center";
+        background: red;
+        padding: 0;
+        margin: 1em 0 0 0;
+        border: 1pt solid blue;
+        vertical-align: top;
+    }
+    @top-right-corner {
+        content: "this is the top right";
+        background: green;
+        padding: 0;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @bottom-right-corner {
+        content: "this is the bottom right";
+        background: red;
+        padding: 0;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @bottom-center {
+        content: "this is the bottom center";
+        background: green;
+        padding: 0;
+        margin: 0 0 2em 0;
+        border: 1pt solid blue;
+        vertical-align: bottom;
+    }
+    @bottom-left-corner {
+        content: "this is the bottom left";
+        background: red;
+        padding: 0;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+}
+</code></p>
+
+
+	</div><!--#wrapper-->
+	
+
+	<div id="footer" class="non-printing">
+		<div class="footer-content">
+			<p>
+				<a href="http://electricbookworks.com" title="Electric Book Works" class="footer-publisher">Electric Book Works</a>
+				<a href="/margin-boxes-demo/" title="Home: Demo" class="footer-series">Demo</a>
+				<a href="0-3-contents.html" title="Contents: " class="footer-book"><em></em></a>
+				<a href="" title="Top: Margin boxes demo" class="footer-page">Margin boxes demo</a>
+			</p>
+		</div><!--.footer-content-->
+	</div><!--#footer-->
+
+	
+</body>
+</html>
+
