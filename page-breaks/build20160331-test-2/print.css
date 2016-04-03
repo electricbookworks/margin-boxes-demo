@@ -1,0 +1,74 @@
+/*
+Testing behaviour in Prince build 20160331 in Windows 10 from the command line.
+Showing that page-break-before: right is not working.
+
+I am trying to:
+
+* get chapters to start on right-hand pages
+* get blank pages to belong to the preceding @page
+* only use 'page-break-after: right' for the cover 
+  (the cover is only included for ebook editions, not professional print-ready files).
+*/
+
+/* PDF view settings */
+@prince-pdf {
+    prince-pdf-page-layout: two-page-right;
+}
+
+/* Naming the pages and set page breaks.
+
+Unlike in 10r7, the behaviour of page-break-after is working as expected.
+But page-break-before: right is not working at all.
+
+*/
+
+body.cover {
+    page: cover;
+    page-break-after: right;
+}
+body.title-page {
+    page: title-page;
+    counter-reset: page 1;
+    page-break-before: right;
+}
+body.chapter {
+    page: chapter;
+    counter-reset: page 1;
+    page-break-before: right;
+}
+
+/* I shouldn't have to use this 'end-on-left' class to get a blank
+between the title page and first chapter. It works as a workaround here, 
+but page-break-before: right on all chapters would be better. */
+.end-on-left {
+    page-break-after: right;
+}
+
+/* Formatting the pages, page numbers and page labels.
+
+Page numbers are formatting correctly, and therefore belong to the right section.
+In 10r7, the page labels are wrong in the output PDF. Fixed in build 20160331. 
+
+*/
+
+@page cover {
+    background: yellow;
+    prince-pdf-page-label: counter(page, lower-alpha);
+    @bottom {
+        content: counter(page, lower-alpha);
+    }
+}
+@page title-page {
+    background: pink;
+    prince-pdf-page-label: counter(page, lower-roman);
+    @bottom {
+        content: counter(page, lower-roman);
+    }
+}
+@page chapter {
+    background: beige;
+    prince-pdf-page-label: counter(page);
+    @bottom {
+        content: counter(page);
+    }
+}

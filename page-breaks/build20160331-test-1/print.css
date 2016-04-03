@@ -1,0 +1,59 @@
+/* Testing behaviour in Prince build 20160331 in Windows 10 from the command line. */
+
+/* PDF view settings */
+@prince-pdf {
+    prince-pdf-page-layout: two-page-right;
+}
+
+/* Name the pages and set page breaks.
+
+I am trying to get blank pages between sections to belong to the first section,
+hence the use of 'page-break-after'.
+In 10r7, I had to set the cover and chapter to break after 'right', 
+but the title-page to break after 'left', for the same behaviour. 
+In this latest build, I can use 'right' each each case for the same behaviour. Good! */
+
+body.cover {
+    page: cover;
+    page-break-after: right;
+}
+body.title-page {
+    page: title-page;
+    counter-reset: page 1;
+    page-break-after: right;
+}
+body.chapter {
+    page: chapter;
+    counter-reset: page 1;
+    page-break-after: right;
+/*    page-break-before: left;*/
+}
+
+/* Format the pages, page numbers and page labels.
+
+Note the page numbering is working:
+page numbers are formatted correctly, and therefore belong the right section.
+In 10r7, the page labels are wrong in the output PDF.
+THis is now fixed in build 20160331. */
+
+@page cover {
+    background: yellow;
+    prince-pdf-page-label: counter(page, lower-alpha);
+    @bottom {
+        content: counter(page, lower-alpha);
+    }
+}
+@page title-page {
+    background: pink;
+    prince-pdf-page-label: counter(page, lower-roman);
+    @bottom {
+        content: counter(page, lower-roman);
+    }
+}
+@page chapter {
+    background: beige;
+    prince-pdf-page-label: counter(page);
+    @bottom {
+        content: counter(page);
+    }
+}

@@ -1,0 +1,176 @@
+---
+# Print styles: Electric Book Framework Classic Theme
+---
+
+// First, let's set character encoding. Don't change this.
+@charset "utf-8";
+
+// -------------
+// Set variables
+// -------------
+
+// First, we set several variables related to overall page setup.
+$page-size: 129mm 198mm; // Width, then height. 129×198 is B-format (Lightning Source compatible)
+$margin-top: 15mm;
+$margin-bottom: 20mm;
+$margin-outside: 13mm;
+$margin-inside: 19mm;
+$bleed: 3mm;
+$trim: 3mm;
+$crop-marks: crop; // crop | none
+
+// We name font variables for two categories:
+// - 'text' fonts are used for body text and some page features;
+// - 'display' fonts are used for headings and similar short-string features.
+// For each category, we set a main font and a secondary font, allowing up to four fonts.
+// Finally, we set a fifth, monospace font for elements like computer code.
+$font-text-main: "Linux Libertine", serif;
+$font-text-secondary: "Source Sans Pro", sans-serif;
+$font-display-main: "Source Sans Pro", sans-serif;
+$font-display-secondary: "Linux Libertine", serif;
+$font-code: "Inconsolata", monospace;
+
+// Finally, we set variables related to text flow.
+$font-size-default: 11pt;
+$line-height-default: 14pt; // Set in points. For consistent baselines, all other line heights and vertical spaces are based on this.
+$text-align: left;
+$orphans: 1; // Minimum number of lines that must be left at the bottom of the first page
+$widows: 1; // Minimum number of lines that must be left at the top of the second page
+$letter-spacing-text: 0em; // Default letter-spacing for p, ul, ol, dl. Set in ems, e.g. 0.01em for 10/1000s of an em.
+$hyphenation: auto; // Can be auto, none, or manual (only breaks on hyphens and soft hyphens)
+$hyphenation-dictionary: ""; // File name of dictionary in css/dictionaries.
+
+// Should chapters start on a right-hand page (recto) or on any page?
+// This setting applies to the frontmatter, dedication-page, epigraph-page and chapter page styles.
+// (The halftitle-page, title-page and contents-page page styles always start on a recto.)
+$start-on: right; // right or auto or left ()
+
+// Set the content of headers and footers.
+//
+// For no content: normal
+// For a page number: counter(page)
+// For the last h1 (increment to h2, h3, h4, h5, h6 as needed): string(h1-text, last)
+// For the title attribute of the last h1 (increment to h2, h3, h4, h5, h6 as needed): string(h1-title, last)
+// (Note: if you use title attributes, you must add them for every heading at the heading-level you choose.)
+// For a phrase: "Any phrase in quotes"
+// For an em space: "\2003"
+// For other special characters, see CSS (ISO) at https://brajeshwar.github.io/entities/
+
+// Verso (left-hand-page)
+$verso-top: "Top";
+$verso-top-right: "Top right";
+$verso-top-left: "Top left";
+$verso-top-right-corner: "Top right corner";
+$verso-top-left-corner: "Top left corner";
+$verso-bottom: "Bottom";
+$verso-bottom-left: "Bottom left";
+$verso-bottom-right: "Bottom right";
+$verso-bottom-left-corner: "Bottom left corner";
+$verso-bottom-right-corner: "Bottom right corner";
+
+// Recto (right-hand-page)
+$recto-top: "Top";
+$recto-top-right: "Top right";
+$recto-top-left: "Top left";
+$recto-top-right-corner: "Top right corner";
+$recto-top-left-corner: "Top left corner";
+$recto-bottom: "Bottom";
+$recto-bottom-left: "Bottom left";
+$recto-bottom-right: "Bottom right";
+$recto-bottom-left-corner: "Bottom left corner";
+$recto-bottom-right-corner: "Bottom right corner";
+
+// --------------------------------------------------------
+// Import font files (@font-face) for fonts you specify
+// You may need to add the actual font files to `css/fonts`
+// --------------------------------------------------------
+
+//@import "adobe-caslon-pro";
+//@import "fonts/crimson-text";
+//@import "fonts/crimson";
+@import "fonts/inconsolata";
+//@import "fonts/kalam";
+//@import "fonts/linux-biolinum";
+@import "fonts/linux-libertine";
+//@import "fonts/montserrat";
+//@import "fonts/overpass";
+@import "fonts/source-sans-pro";
+//@import "fonts/trajan-pro";
+
+// ---------------------
+// Import theme partials
+// ---------------------
+
+@import "themes/classic/print";
+
+// -------------
+// Custom styles
+// -------------
+
+// Add any custom style rules here.
+
+
+.chapter {
+	margin-top: 0;
+}
+
+@page chapter {
+	background-color: purple;
+	border: 2pt solid cyan;
+	margin-top: 25mm;
+	margin-inside: 20mm;
+	margin-bottom: 30mm;
+	margin-outside: 30mm;
+    @top {
+        background: red;
+        margin: 10mm 0 0 0;
+        border: 1pt solid blue;
+        vertical-align: top;
+    }
+    @top-left {
+        background: green;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @top-right {
+        background: green;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @top-left-corner {
+        background: yellow;
+        margin: 0 0 5mm 0;
+        border: 1pt solid blue;
+    }
+    @top-right-corner {
+        background: yellow;
+        margin: 0 0 5mm 0;
+        border: 1pt solid blue;
+    }
+    @bottom {
+        background: green;
+        margin: 0 0 15mm 0;
+        border: 1pt solid blue;
+        vertical-align: bottom;
+    }
+    @bottom-right {
+        background: red;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @bottom-left {
+        background: red;
+        margin: 0;
+        border: 1pt solid blue;
+    }
+    @bottom-right-corner {
+        background: yellow;
+        margin: 0 0 5mm 0;
+        border: 1pt solid blue;
+    }
+    @bottom-left-corner {
+        background: yellow;
+        margin: 0 0 5mm 0;
+        border: 1pt solid blue;
+    }
+}
